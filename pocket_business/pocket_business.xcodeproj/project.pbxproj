@@ -83,9 +83,9 @@
 		838297C625C39A0100C47C4B /* pocket_business */ = {
 			isa = PBXGroup;
 			children = (
+				838297CE25C39A0100C47C4B /* ContentView.swift */,
 				838297C725C39A0100C47C4B /* AppDelegate.swift */,
 				838297C925C39A0100C47C4B /* SceneDelegate.swift */,
-				838297CE25C39A0100C47C4B /* ContentView.swift */,
 				838297D025C39A0300C47C4B /* Assets.xcassets */,
 				838297D525C39A0300C47C4B /* LaunchScreen.storyboard */,
 				838297D825C39A0300C47C4B /* Info.plist */,
