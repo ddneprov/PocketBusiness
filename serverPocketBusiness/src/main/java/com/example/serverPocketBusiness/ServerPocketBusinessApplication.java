@@ -9,5 +9,4 @@ public class ServerPocketBusinessApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ServerPocketBusinessApplication.class, args);
 	}
-
 }
