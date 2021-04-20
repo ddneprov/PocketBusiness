@@ -25,6 +25,11 @@ public class ProductOrchestration {
         productRepository.save(product1);
     }
 
+    /**
+     * поиск продукта
+     * @param id
+     * @return
+     */
     public Product findProductById(Integer id){
         Optional<Product> product = productRepository.findFirstById(id);
         if (product.isPresent())
