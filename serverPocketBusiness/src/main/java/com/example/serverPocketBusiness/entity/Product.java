@@ -20,7 +20,6 @@ public class Product {
     private Integer amount;
     private Date expirationDate;
 
-
     public Product(){}
 
     public Product(Product product){

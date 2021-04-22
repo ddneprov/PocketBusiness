@@ -14,8 +14,10 @@ public class Sale {
     private String products;
     private String amounts;
     private String costs;
+    private String costsWithTax;
     private Date date;
     private Double totalCost;
+    private Double totalCostWithTax;
 
     public Sale(){}
 
@@ -25,7 +27,9 @@ public class Sale {
         this.amounts = sale.getAmounts();
         this.date = sale.getDate();
         this.costs = sale.getCosts();
+        this.costsWithTax = sale.getCostsWithTax();
         this.totalCost = sale.getTotalCost();
+        this.totalCostWithTax = sale.getTotalCostWithTax();
     }
 
     public Integer getId() {
@@ -74,5 +78,21 @@ public class Sale {
 
     public void setTotalCost(Double totalCost) {
         this.totalCost = totalCost;
+    }
+
+    public String getCostsWithTax() {
+        return costsWithTax;
+    }
+
+    public void setCostsWithTax(String costsWithTax) {
+        this.costsWithTax = costsWithTax;
+    }
+
+    public Double getTotalCostWithTax() {
+        return totalCostWithTax;
+    }
+
+    public void setTotalCostWithTax(Double totalCostWithTax) {
+        this.totalCostWithTax = totalCostWithTax;
     }
 }
