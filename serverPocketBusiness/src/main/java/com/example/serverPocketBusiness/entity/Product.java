@@ -14,7 +14,9 @@ public class Product {
     private Integer id;
 
     private String name;
+    private Double tax;
     private Double cost;
+    private Double costWithTax;
     private Integer amount;
     private Date expirationDate;
 
@@ -23,7 +25,9 @@ public class Product {
 
     public Product(Product product){
         this.name = product.getName();
+        this.tax = product.getTax();
         this.cost = product.getCost();
+        this.costWithTax = product.getCostWithTax();
         this.amount = product.getAmount();
         this.expirationDate = product.getExpirationDate();
     }
@@ -66,5 +70,21 @@ public class Product {
 
     public void setExpirationDate(Date expirationDate) {
         this.expirationDate = expirationDate;
+    }
+
+    public Double getTax() {
+        return tax;
+    }
+
+    public void setTax(Double tax) {
+        this.tax = tax;
+    }
+
+    public Double getCostWithTax() {
+        return costWithTax;
+    }
+
+    public void setCostWithTax(Double costWithTax) {
+        this.costWithTax = costWithTax;
     }
 }

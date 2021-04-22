@@ -14,7 +14,6 @@ public class ProductOrchestration {
     @Autowired
     private ProductRepository productRepository;
 
-
     /**
      * создание продукта
      * @param product
