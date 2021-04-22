@@ -1,5 +1,7 @@
 package com.example.serverPocketBusiness.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -18,6 +20,7 @@ public class Product {
     private Double cost;
     private Double costWithTax;
     private Integer amount;
+    //@JsonFormat(pattern="yyyy-MM-dd")
     private Date expirationDate;
 
     public Product(){}
