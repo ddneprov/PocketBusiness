@@ -6,12 +6,11 @@ import com.example.serverPocketBusiness.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/product")
 public class ProductController {
-
-    @Autowired
-    private ProductRepository productRepository;
 
     @Autowired
     private ProductOrchestration productOrchestration;
@@ -24,5 +23,10 @@ public class ProductController {
     @GetMapping("/find")
     public Product findProductById(Integer id){
         return productOrchestration.findProductById(id);
+    }
+
+    @GetMapping("/all")
+    public List<Product> findAll(){
+        return productOrchestration.findAll();
     }
 }

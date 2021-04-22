@@ -5,6 +5,7 @@ import com.example.serverPocketBusiness.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -34,5 +35,9 @@ public class ProductOrchestration {
         if (product.isPresent())
             return product.get();
         throw new NullPointerException("no such product by id");
+    }
+
+    public List<Product> findAll(){
+        return productRepository.findAll();
     }
 }
