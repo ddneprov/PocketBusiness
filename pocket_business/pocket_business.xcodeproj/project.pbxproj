@@ -68,6 +68,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8329B9D9263240A500FDA968 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				8329B9C0262FBA0000FDA968 /* Product.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		838297BB25C39A0100C47C4B = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +97,7 @@
 		838297C625C39A0100C47C4B /* pocket_business */ = {
 			isa = PBXGroup;
 			children = (
+				8329B9D9263240A500FDA968 /* Entities */,
 				838297CE25C39A0100C47C4B /* ContentView.swift */,
 				838297C725C39A0100C47C4B /* AppDelegate.swift */,
 				838297C925C39A0100C47C4B /* SceneDelegate.swift */,
@@ -97,7 +106,6 @@
 				838297D825C39A0300C47C4B /* Info.plist */,
 				838297CB25C39A0100C47C4B /* pocket_business.xcdatamodeld */,
 				838297D225C39A0300C47C4B /* Preview Content */,
-				8329B9C0262FBA0000FDA968 /* Product.swift */,
 				8329B9C4262FBAB200FDA968 /* Utils.swift */,
 				8329B9C8262FBC3200FDA968 /* Requests.swift */,
 			);

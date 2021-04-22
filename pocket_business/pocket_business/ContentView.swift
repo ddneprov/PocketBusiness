@@ -10,7 +10,7 @@ import SwiftUI
 import SwiftUICharts
 
 
-var a: String = "ergmergergerg"
+
 
 struct ContentView: View {
     
@@ -18,7 +18,6 @@ struct ContentView: View {
     let requsets = Requests()
     
     @State var statusString : String = "Current Time"
-    //@State var products : [Product] = Array()
     @State var products = [Product]()
     
     
@@ -30,8 +29,6 @@ struct ContentView: View {
             ScrollView{
                 
                 VStack{
-                    
-                    
                     let fatBurning = Legend(color: .green, label: "Fat Burning", order: 3)
                     let warmUp = Legend(color: .blue, label: "Warm Up", order: 2)
 
@@ -54,7 +51,7 @@ struct ContentView: View {
                     BarChartView(dataPoints: points, limit: mediana)
                     
                     Spacer()
-                    
+                        
                     ForEach (0..<products.count, id: \.self) { index in
                         Text(products[index].name).baselineOffset(10)
                         Divider()
@@ -69,11 +66,7 @@ struct ContentView: View {
         
         
     }
-
     
-    func abc() {
-        print(123)
-    }
     
     func getAllProductsResponse() {
         let url = URL(string: "http://localhost:8080/product/all")!
@@ -104,11 +97,8 @@ struct ContentView: View {
             if let data = data, let dataString = String(data: data, encoding: .utf8){
                 do{
                     products = try JSONDecoder().decode([Product].self, from: data)
-                    statusString = dataString
                     print("Response data string:\n \(dataString)")
-                    print("product 1 " + products[0].name)
                 } catch let error {
-                    print("ERROR")
                     print(error)
                 }
                
