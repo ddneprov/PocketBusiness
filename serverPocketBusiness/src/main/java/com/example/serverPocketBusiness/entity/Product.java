@@ -22,6 +22,7 @@ public class Product {
     private Integer amount;
     //@JsonFormat(pattern="yyyy-MM-dd")
     private Date expirationDate;
+    private Integer countOfSales;
 
     public Product(){}
 
@@ -32,6 +33,7 @@ public class Product {
         this.costWithTax = product.getCostWithTax();
         this.amount = product.getAmount();
         this.expirationDate = product.getExpirationDate();
+        this.countOfSales = product.getCountOfSales();
     }
 
     public Integer getId() {
@@ -88,5 +90,13 @@ public class Product {
 
     public void setCostWithTax(Double costWithTax) {
         this.costWithTax = costWithTax;
+    }
+
+    public Integer getCountOfSales() {
+        return countOfSales;
+    }
+
+    public void setCountOfSales(Integer countOfSales) {
+        this.countOfSales = countOfSales;
     }
 }
