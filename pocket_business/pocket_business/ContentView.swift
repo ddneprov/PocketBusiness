@@ -37,7 +37,7 @@ struct ContentView: View {
                 PeopleView()
                      .tabItem {
                         Image(systemName: "tv.fill")
-                        Text("Работники")
+                        Text("Люди")
                       }
                 BankView()
                      .tabItem {
@@ -87,13 +87,13 @@ struct ThirdView: View {
 
 struct PeopleView: View {
     var body: some View {
-        Color.green
+        Color.red
     }
 }
 
 struct BankView: View {
     var body: some View {
-        Color.green
+        Color.black
     }
 }
 
@@ -137,7 +137,7 @@ struct TodayView: View {
     let requsets = Requests()
     
     @State var statusString : String = "Current Time"
-    @State var products = [Product]()
+    @State var sales = [Sale]()
     var body: some View {
         NavigationView{
             ScrollView{
@@ -162,20 +162,31 @@ struct TodayView: View {
                         .init(value: 102, label: "вс", legend: warmUp),
                     ]
                     
+                    
                     BarChartView(dataPoints: points, limit: mediana)
                     
+                    Text(self.utils.getDate())
+                        .font(.system(size: 24, weight: .heavy, design: .default))
+                        .padding(.horizontal, 0)
+                        .frame(width: 400, height: 50, alignment: .leading)
+                    
                     Spacer()
+                    Spacer()
+                   
                         
-                    ForEach (0..<products.count, id: \.self) { index in
-                        Text(products[index].name).baselineOffset(10)
+                    ForEach (0..<sales.count, id: \.self) { index in
+                        Text(sales[index].names + " " + String(sales[index].totalCost)).baselineOffset(10)
                         Divider()
                     }
-                }.navigationTitle(self.utils.getDate() + "   330₽/чек")
+                }.navigationTitle("330₽/чек")
             }
-        }.onAppear{self.getAllProductsResponse()}
+        }.onAppear{self.getAllSalesResponse()}
     }
-    func getAllProductsResponse() {
-        let url = URL(string: "http://localhost:8080/product/all")!
+    
+    
+    
+    func getAllSalesResponse() {
+        let url = URL(string: "http://localhost:8080/sale/all")!
 
         //guard let requestUrl = url else { fatalError() }
         let requestUrl = url
@@ -202,7 +213,7 @@ struct TodayView: View {
             // Convert HTTP Response Data to a simple String
             if let data = data, let dataString = String(data: data, encoding: .utf8){
                 do{
-                    products = try JSONDecoder().decode([Product].self, from: data)
+                    sales = try JSONDecoder().decode([Sale].self, from: data)
                     print("Response data string:\n \(dataString)")
                 } catch let error {
                     print(error)

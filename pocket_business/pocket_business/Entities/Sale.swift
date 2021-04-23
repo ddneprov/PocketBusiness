@@ -13,6 +13,7 @@ struct Sale: Codable {
     let products: String
     let amounts: String
     let costs: String
+    let names: String
     let costsWithTax: String
     let date: String
     let totalCost: Double
