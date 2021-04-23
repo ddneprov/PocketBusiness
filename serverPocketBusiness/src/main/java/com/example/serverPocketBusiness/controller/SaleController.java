@@ -6,6 +6,8 @@ import com.example.serverPocketBusiness.repository.SaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/sale")
 public class SaleController {
@@ -18,5 +20,10 @@ public class SaleController {
         Sale sale1 = new Sale();
         sale1 = sale;
         saleRepository.save(sale1);
+    }
+
+    @GetMapping("/all")
+    public List<Sale> getAll(){
+        return saleRepository.findAll();
     }
 }
