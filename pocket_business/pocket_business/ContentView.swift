@@ -13,18 +13,132 @@ import SwiftUICharts
 
 
 struct ContentView: View {
-    
+    var body: some View {
+        
+        TabView {
+            TodayView()
+                     .tabItem {
+                        Image(systemName: "macmini.fill")
+                        Text("Сегодня")
+                      }
+
+            TopView()
+                     .tabItem {
+                        Image(systemName: "tv.fill")
+                        Text("Топ")
+                      }
+                
+                ThirdView()
+                     .tabItem {
+                        Image(systemName: "tv.fill")
+                        Text("Метрики")
+                      }
+                
+                PeopleView()
+                     .tabItem {
+                        Image(systemName: "tv.fill")
+                        Text("Работники")
+                      }
+                BankView()
+                     .tabItem {
+                        Image(systemName: "tv.fill")
+                        Text("Деньги")
+                      }
+            }
+}
+
+
+
+
+
+
+
+
+
+struct ContentView_Previews: PreviewProvider {
+
+    static var previews: some View {
+        Group {
+            ContentView()
+        }
+    }
+}
+
+
+
+
+
+
+
+struct TopView: View {
+    var body: some View {
+        Color.blue
+    }
+}
+
+
+
+
+struct ThirdView: View {
+    var body: some View {
+        Color.green
+    }
+}
+
+struct PeopleView: View {
+    var body: some View {
+        Color.green
+    }
+}
+
+struct BankView: View {
+    var body: some View {
+        Color.green
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Main screen
+
+struct TodayView: View {
     let utils = Utils()
     let requsets = Requests()
     
     @State var statusString : String = "Current Time"
     @State var products = [Product]()
-    
-    
     var body: some View {
-        
-        
-        
         NavigationView{
             ScrollView{
                 
@@ -56,18 +170,10 @@ struct ContentView: View {
                         Text(products[index].name).baselineOffset(10)
                         Divider()
                     }
-                }
-                .navigationTitle(self.utils.getDate())
+                }.navigationTitle(self.utils.getDate() + "   330₽/чек")
             }
-            
         }.onAppear{self.getAllProductsResponse()}
-        
-       
-        
-        
     }
-    
-    
     func getAllProductsResponse() {
         let url = URL(string: "http://localhost:8080/product/all")!
 
@@ -108,16 +214,4 @@ struct ContentView: View {
     }
 }
 
-
-
-
-struct ContentView_Previews: PreviewProvider {
-
-    static var previews: some View {
-        Group {
-            ContentView()
-            
-        }
-    }
 }
-

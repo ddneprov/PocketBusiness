@@ -11,6 +11,7 @@
 		8329B9C1262FBA0000FDA968 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8329B9C0262FBA0000FDA968 /* Product.swift */; };
 		8329B9C5262FBAB200FDA968 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8329B9C4262FBAB200FDA968 /* Utils.swift */; };
 		8329B9C9262FBC3200FDA968 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8329B9C8262FBC3200FDA968 /* Requests.swift */; };
+		8329B9DB263240E700FDA968 /* Sale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8329B9DA263240E700FDA968 /* Sale.swift */; };
 		838297C825C39A0100C47C4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838297C725C39A0100C47C4B /* AppDelegate.swift */; };
 		838297CA25C39A0100C47C4B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838297C925C39A0100C47C4B /* SceneDelegate.swift */; };
 		838297CD25C39A0100C47C4B /* pocket_business.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 838297CB25C39A0100C47C4B /* pocket_business.xcdatamodeld */; };
@@ -35,6 +36,7 @@
 		8329B9C0262FBA0000FDA968 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		8329B9C4262FBAB200FDA968 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		8329B9C8262FBC3200FDA968 /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
+		8329B9DA263240E700FDA968 /* Sale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sale.swift; sourceTree = "<group>"; };
 		838297C425C39A0100C47C4B /* pocket_business.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pocket_business.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		838297C725C39A0100C47C4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		838297C925C39A0100C47C4B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				8329B9C0262FBA0000FDA968 /* Product.swift */,
+				8329B9DA263240E700FDA968 /* Sale.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			files = (
 				838297C825C39A0100C47C4B /* AppDelegate.swift in Sources */,
 				838297CA25C39A0100C47C4B /* SceneDelegate.swift in Sources */,
+				8329B9DB263240E700FDA968 /* Sale.swift in Sources */,
 				8329B9C1262FBA0000FDA968 /* Product.swift in Sources */,
 				838297CF25C39A0100C47C4B /* ContentView.swift in Sources */,
 				838297CD25C39A0100C47C4B /* pocket_business.xcdatamodeld in Sources */,
