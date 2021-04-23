@@ -15,6 +15,7 @@ public class Sale {
 
     private String products;
     private String amounts;
+    private String names;
     private String costs;
     private String costsWithTax;
 
@@ -31,6 +32,7 @@ public class Sale {
         this.amounts = sale.getAmounts();
         this.date = sale.getDate();
         this.costs = sale.getCosts();
+        this.names = sale.getNames();
         this.costsWithTax = sale.getCostsWithTax();
         this.totalCost = sale.getTotalCost();
         this.totalCostWithTax = sale.getTotalCostWithTax();
@@ -74,6 +76,14 @@ public class Sale {
 
     public void setCosts(String totalCosts) {
         this.costs = totalCosts;
+    }
+
+    public String getNames() {
+        return names;
+    }
+
+    public void setNames(String names) {
+        this.names = names;
     }
 
     public Double getTotalCost() {
