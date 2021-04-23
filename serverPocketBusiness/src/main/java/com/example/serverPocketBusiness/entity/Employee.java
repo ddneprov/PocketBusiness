@@ -15,6 +15,7 @@ public class Employee {
     private Double salary;
     private Double tax;
     private Double salaryWithTax;
+    private String phoneNumber;
 
     public Employee(){}
 
@@ -24,6 +25,7 @@ public class Employee {
         this.salary = employee.getSalary();
         this.tax = employee.getTax();
         this.salaryWithTax = employee.getSalaryWithTax();
+        this.phoneNumber = employee.getPhoneNumber();
     }
 
     public Integer getId() {
@@ -72,5 +74,13 @@ public class Employee {
 
     public void setSalaryWithTax(Double salaryWithTax) {
         this.salaryWithTax = salaryWithTax;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
