@@ -16,4 +16,5 @@ struct Product: Codable {
     let costWithTax: Double
     let amount: Int
     let expirationDate: String
+    let countOfSales: Int
 }
