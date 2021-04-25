@@ -27,7 +27,7 @@ public class SaleOrchestration {
      *
      * @param sale
      */
-    public void createSale(Sale sale){
+    public void createSale(Sale sale) {
 
         String[] tokens = sale.getProducts().split(",");
         for (String token : tokens) {

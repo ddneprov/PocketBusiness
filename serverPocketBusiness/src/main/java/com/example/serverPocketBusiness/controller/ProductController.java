@@ -2,7 +2,6 @@ package com.example.serverPocketBusiness.controller;
 
 import com.example.serverPocketBusiness.entity.Product;
 import com.example.serverPocketBusiness.orchestration.ProductOrchestration;
-import com.example.serverPocketBusiness.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,5 +27,10 @@ public class ProductController {
     @GetMapping("/all")
     public List<Product> findAll(){
         return productOrchestration.findAll();
+    }
+
+    @GetMapping("/top")
+    public List<Product> findAllSortedByCountOfSales(){
+        return productOrchestration.findAllSortedByCountOfSales();
     }
 }

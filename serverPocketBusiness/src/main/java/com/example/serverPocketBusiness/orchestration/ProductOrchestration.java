@@ -5,6 +5,7 @@ import com.example.serverPocketBusiness.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,5 +40,11 @@ public class ProductOrchestration {
 
     public List<Product> findAll(){
         return productRepository.findAll();
+    }
+
+    public List<Product> findAllSortedByCountOfSales(){
+        List<Product> products = productRepository.findAll();
+        products.sort(Comparator.comparing(Product::getCountOfSales).reversed());
+        return products;
     }
 }
