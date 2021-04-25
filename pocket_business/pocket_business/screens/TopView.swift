@@ -50,7 +50,7 @@ struct TopView: View {
                         
                         HorizontalBarChartView(dataPoints: points).padding(10)
                         
-                        Divider()
+                        
                     }.background(Color(UIColor(red: 0.76, green: 0.88, blue: 0.97, alpha: 1.00))).cornerRadius(1).padding(10)
                 }.navigationTitle("Топ товаров")
             }.onAppear{

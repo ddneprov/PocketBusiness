@@ -11,8 +11,71 @@ import SwiftUI
 
 
 
+
+
 struct PeopleView: View {
     var body: some View {
-        Color.red
+        NavigationView{
+            ScrollView{
+                VStack{
+                    Text("")
+                    
+                    HStack{
+                        VStack{
+                            Image("face")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .padding(10)
+                                        .frame(height: 200)
+                            
+                            Text("Иван Иванов")
+                            Text("Менеджер")
+                            Text("+89090334541").fontWeight(.light)
+                        }
+                        
+                        VStack{
+                            Image("face")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .padding(10)
+                                        .frame(height: 200)
+                            
+                            Text("Мария Васильева")
+                            Text("Бариста")
+                            Text("+89037209345").fontWeight(.light)
+                        }
+                    }
+                    
+                    Text("")
+                    Text("")
+                    
+                    HStack{
+                        VStack{
+                            Image("face")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .padding(10)
+                                        .frame(height: 200)
+                            
+                            Text("Иван Иванов")
+                            Text("Бариста")
+                            Text("+89067241757").fontWeight(.light)
+                        }
+                        
+                        VStack{
+                            Image("face")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .padding(10)
+                                        .frame(height: 200)
+                            
+                            Text("Иван Иванов")
+                            Text("Уборщица")
+                            Text("+8934384951").fontWeight(.light)
+                        }
+                    }
+                }.navigationTitle("Сотрудники")
+            }
+        }
     }
 }
