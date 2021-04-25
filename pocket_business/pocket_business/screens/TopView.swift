@@ -30,35 +30,32 @@ struct TopView: View {
 //            return points
 //        }
     
+    
+    
+    
         var body: some View {
             NavigationView{
-                
-                
-                
                 ScrollView{
                     VStack{
                         
-                        ForEach (0..<products.count, id: \.self) { index in
-                            HStack{
-                                let imageName: String = String(index + 1) + ".circle"
-                                Image(systemName: (imageName)).padding(10)
-                                Text(products[index].name)
-                                Spacer()
-                                Text(String(products[index].countOfSales) + " шт.").padding(10)
-                            }//.baselineOffset(10)
-                        }
-
+//                        ForEach (0..<products.count, id: \.self) { index in
+//                            HStack{
+//                                let imageName: String = String(index + 1) + ".circle"
+//                                Image(systemName: (imageName)).padding(10)
+//                                Text(products[index].name)
+//                                Spacer()
+//                                Text(String(products[index].countOfSales) + " шт.").padding(10)
+//                            }//.baselineOffset(10)
+//                        }
+                        
                         HorizontalBarChartView(dataPoints: points).padding(10)
                         
                         Divider()
-                    }
-                }
+                    }.background(Color(UIColor(red: 0.76, green: 0.88, blue: 0.97, alpha: 1.00))).cornerRadius(1).padding(10)
+                }.navigationTitle("Топ товаров")
             }.onAppear{
                 self.getAllProductsResponse()
-            }.onDisappear(){
-                
             }
-        
         }
     
     
@@ -93,9 +90,20 @@ struct TopView: View {
                     do{
                         products = try JSONDecoder().decode([Product].self, from: data)
                         
-                        let low = Legend(color: .red, label: "", order: 1)
+                        var low = Legend(color: .black, label: "", order: 1)
                         points = [DataPoint]()
                         for product in products {
+                            
+                            if product.countOfSales < 40 {
+                                low = Legend(color: .orange, label: "", order: 3)
+                            }
+                            
+                            if product.countOfSales > 40 {
+                                low = Legend(color: .yellow, label: "", order: 3)
+                            }
+                            if product.countOfSales > 60 {
+                                low = Legend(color: .green, label: "", order: 2)
+                            }
                             points.append(.init(value: Double(product.countOfSales),
                                                 label: LocalizedStringKey(product.name),
                                                 legend: low))
