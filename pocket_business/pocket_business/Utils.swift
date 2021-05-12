@@ -13,6 +13,7 @@ public class Utils{
     func getDate() -> String{
         let date = Date()
         let format = DateFormatter()
+        format.locale = Locale(identifier: "ru_RU")
         format.dateFormat = "dd, EEEE"
         return format.string(from: date)
     }

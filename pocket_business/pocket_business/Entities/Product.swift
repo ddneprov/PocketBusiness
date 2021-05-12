@@ -11,7 +11,10 @@ import Foundation
 struct Product: Codable {
     let id: Int
     let name: String
+    let tax: Double
     let cost: Double
+    let costWithTax: Double
     let amount: Int
     let expirationDate: String
+    let countOfSales: Int
 }
