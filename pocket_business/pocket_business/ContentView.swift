@@ -45,7 +45,6 @@ struct ContentView: View {
     
     @State var signInSuccess = false
     
-    
     var body: some View {
         return Group {
             if signInSuccess {
@@ -118,6 +117,7 @@ struct ContentView: View {
                 
         @Binding var signInSuccess: Bool
         @State private var showError = false
+
         
         var body : some View{
                 VStack {
@@ -157,29 +157,32 @@ struct ContentView: View {
                         }.padding(.horizontal, 6)
                      
                     }.padding()
+                    
                     VStack{
                         
                         Button(action: {
                                         // Your auth logic
                                         if(self.user == self.pass) {
                                             self.signInSuccess = true
-                                        }else {
-                                            self.showError = true
                                         }
+                                        else{
+                                            showError = true
+                                        }
+                                        
+                                        
                                     }) {
-                                        Text("Sign In").foregroundColor(.black).frame(width: UIScreen.main.bounds.width - 120).padding()
-                                    }
-                                    
-                                    if showError {
-                                       Text("Incorrect username/password").foregroundColor(Color.red)
-                                   }
                             
                             
+                            
+                            Text("Sign in").foregroundColor(.black).frame(width: UIScreen.main.bounds.width - 120).padding()
                         }.background(Color("color"))
                             .clipShape(Capsule())
                             .padding(.top, 45)
                         
-                        
+                        if showError {
+                            Text("Incorrect username/password").foregroundColor(Color.red)
+                        }
+                    }
                 }
             }
         }
@@ -190,7 +193,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            //LogIn()
             ContentView()
         }
     }

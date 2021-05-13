@@ -30,16 +30,16 @@ import SwiftUICharts
                         let warmUp = Legend(color: .blue, label: "Warm Up", order: 2)
                         let line = Legend(color: .secondary, label: "Выручка")
 
-                        let mediana = DataPoint(value: 99, label: "109к", legend: line)
+                        let mediana = DataPoint(value: 99, label: "160 ₽", legend: line)
 
                         let points: [DataPoint] = [
-                            .init(value: 70, label: "пн", legend: warmUp),
-                            .init(value: 90, label: "вт", legend: fatBurning),
-                            .init(value: 91, label: "ср", legend: warmUp),
-                            .init(value: 92, label: "чт", legend: warmUp),
-                            .init(value: 130, label: "пт", legend: warmUp),
-                            .init(value: 124, label: "сб", legend: warmUp),
-                            .init(value: 102, label: "вс", legend: warmUp),
+                            .init(value: 170, label: "пн", legend: warmUp),
+                            .init(value: 190, label: "вт", legend: fatBurning),
+                            .init(value: 225, label: "ср", legend: warmUp),
+                            .init(value: 210, label: "чт", legend: warmUp),
+                            .init(value: 160, label: "пт", legend: warmUp),
+                            .init(value: 190, label: "сб", legend: warmUp),
+                            .init(value: 280, label: "вс", legend: warmUp),
                         ]
                         
                         
@@ -57,13 +57,13 @@ import SwiftUICharts
                             HStack {
                                 Text(sales[index].names).padding(10)
                                 Spacer()
-                                Text(String(sales[index].totalCost)).padding(10)
+                                Text(String(sales[index].totalCost) + String(" ₽")).padding(10)
                             }
                             Divider()
                         }
                         
                         
-                    }.navigationTitle("330₽/чек")
+                    }.navigationTitle("170₽/чек")
                 }
             }.onAppear{self.getAllSalesResponse()}
         }
