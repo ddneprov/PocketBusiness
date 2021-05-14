@@ -2,7 +2,7 @@ package com.example.serverPocketBusiness.controller;
 
 
 import com.example.serverPocketBusiness.entity.Employee;
-import com.example.serverPocketBusiness.repository.EmployeeRepositiry;
+import com.example.serverPocketBusiness.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +13,7 @@ import java.util.List;
 public class EmployeeController {
 
     @Autowired
-    private EmployeeRepositiry employeeRepositiry;
+    private EmployeeRepository employeeRepositiry;
 
 
     @PostMapping("/create")
