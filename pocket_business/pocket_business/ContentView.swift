@@ -20,7 +20,7 @@ struct BottomTab: View {
                                         Text("Сегодня")
                                       }
         
-                            TopView()
+                            ThirdView()
                                      .tabItem {
                                         Image(systemName: "arrowtriangle.up.square.fill")
                                         Text("Метрики")
