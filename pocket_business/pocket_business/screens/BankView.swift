@@ -12,11 +12,20 @@ import SwiftUI
 struct BankView: View {
     var body: some View {
        
-        //NavigationView{
-           
-        //}
+      
         
         ScrollView{
+
+            HStack{
+                
+                Spacer()
+                Spacer()
+                Image(systemName: "arrow.uturn.backward.circle.fill").resizable()
+                    .frame(width: 32.0, height: 32.0)
+
+            }
+            
+            
                 VStack {
                     Text("1 200 000 ₽").font(.system(.largeTitle, design: .rounded))
                     Text("чистые активы").font(.system(.title3, design: .rounded))

@@ -121,18 +121,18 @@ struct ContentView: View {
         
         var body : some View{
                 VStack {
-                     Text("Sign In").fontWeight(.heavy).font(.largeTitle).padding([.top,.bottom], 20)
+                     Text("Войдите в 1С «УНФ»").fontWeight(.heavy).font(.largeTitle).padding([.top,.bottom], 20)
                     VStack{
                         
                         VStack(alignment: .leading){
                             
                             VStack(alignment: .leading){
                                 
-                                Text("Username").font(.headline).fontWeight(.light).foregroundColor(Color.init(.label).opacity(0.75))
+                                Text("Почта").font(.headline).fontWeight(.light).foregroundColor(Color.init(.label).opacity(0.75))
                                 
                                 HStack{
                                     
-                                    TextField("Enter Your Username", text: $user)
+                                    TextField("введите почту", text: $user)
                                     
                                     if user != ""{
                                         
@@ -147,9 +147,9 @@ struct ContentView: View {
                             
                             VStack(alignment: .leading){
                                 
-                                Text("Password").font(.headline).fontWeight(.light).foregroundColor(Color.init(.label).opacity(0.75))
+                                Text("Пароль").font(.headline).fontWeight(.light).foregroundColor(Color.init(.label).opacity(0.75))
                                 
-                                SecureField("Enter Your Password", text: $pass)
+                                SecureField("введите пароль", text: $pass)
                                 
                                 Divider()
                             }
@@ -174,13 +174,13 @@ struct ContentView: View {
                             
                             
                             
-                            Text("Sign in").foregroundColor(.black).frame(width: UIScreen.main.bounds.width - 120).padding()
+                            Text("Вход").foregroundColor(.black).frame(width: UIScreen.main.bounds.width - 120).padding()
                         }.background(Color("color"))
                             .clipShape(Capsule())
                             .padding(.top, 45)
                         
                         if showError {
-                            Text("Incorrect username/password").foregroundColor(Color.red)
+                            Text("Неверный логин/пароль").foregroundColor(Color.red)
                         }
                     }
                 }
