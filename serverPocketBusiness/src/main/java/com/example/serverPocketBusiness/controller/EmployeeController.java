@@ -15,7 +15,6 @@ public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepositiry;
 
-
     @PostMapping("/create")
     public void createEmployee(@RequestBody Employee employee){
         Employee employee1 = new Employee();

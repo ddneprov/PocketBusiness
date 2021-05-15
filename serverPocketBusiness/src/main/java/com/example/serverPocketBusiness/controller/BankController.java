@@ -16,7 +16,7 @@ public class BankController {
     private BankRepository bankRepository;
 
     @GetMapping("/info")
-    public Bank getBankInfo(){
+    public Bank getBankInfo() {
         return bankRepository.findAll().get(0);
     }
 }
