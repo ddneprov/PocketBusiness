@@ -17,7 +17,7 @@ public class ProfitOrvhestration {
     private ProfitPerDayRepository profitPerDayRepository;
 
 
-    public List<ProfitPerDay> getAllProfitByDays(){
+    public List<ProfitPerDay> getProfitLastWeek(){
         List<ProfitPerDay> profitPerDay = profitPerDayRepository.findAll();
         profitPerDay.sort(Comparator.comparing(ProfitPerDay::getDate));
         profitPerDay = profitPerDay.subList(0, 7);
