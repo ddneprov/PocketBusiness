@@ -19,6 +19,10 @@ import SwiftUICharts
         
         
         @State var sales = [Sale]()
+        @State var profitLastWeek = [ProfitPerDay]()
+        @State var points = [DataPoint]()
+    
+
       
         
         var body: some View {
@@ -26,24 +30,13 @@ import SwiftUICharts
                 ScrollView{
                     
                     VStack{
-                        let fatBurning = Legend(color: .green, label: "Fat Burning", order: 3)
-                        let warmUp = Legend(color: .blue, label: "Warm Up", order: 2)
-                        let line = Legend(color: .secondary, label: "Выручка")
 
-                        let mediana = DataPoint(value: 99, label: "160 ₽", legend: line)
-
-                        let points: [DataPoint] = [
-                            .init(value: 170, label: "пн", legend: warmUp),
-                            .init(value: 190, label: "вт", legend: fatBurning),
-                            .init(value: 225, label: "ср", legend: warmUp),
-                            .init(value: 210, label: "чт", legend: warmUp),
-                            .init(value: 160, label: "пт", legend: warmUp),
-                            .init(value: 190, label: "сб", legend: warmUp),
-                            .init(value: 280, label: "вс", legend: warmUp),
-                        ]
+                        //let line = Legend(color: .secondary, label: "Выручка")
+                        //let mediana = DataPoint(value: 99, label: "160 ₽", legend: line)
+                        //BarChartView(dataPoints: points, limit: mediana)
                         
                         
-                        BarChartView(dataPoints: points, limit: mediana)
+                        BarChartView(dataPoints: points)
                         
                         Text(self.utils.getDate())
                             .font(.system(size: 24, weight: .heavy, design: .default))
@@ -53,6 +46,7 @@ import SwiftUICharts
                         Spacer()
                         Spacer()
                        
+                        
                         ForEach (0..<sales.count, id: \.self) { index in
                             HStack {
                                 Text(sales[index].names).padding(10)
@@ -65,24 +59,30 @@ import SwiftUICharts
                         
                     }.navigationTitle("170₽/чек")
                 }
-            }.onAppear{self.getAllSalesResponse()}
+            }.onAppear{
+                self.getAllSalesResponse()
+                //self.getProfitPerDay()
+            }
         }
         
        
         
         func getAllSalesResponse() {
-            let url = URL(string: "http://localhost:8080/sale/all")!
-
+            
+            getLastWeek()
+            
+            let url1 = URL(string: "http://localhost:8080/profit/getLastWeek")!
+            
             //guard let requestUrl = url else { fatalError() }
-            let requestUrl = url
+            let requestUrl1 = url1
 
             // Create URL Request
-            var request = URLRequest(url: requestUrl)
+            var request2 = URLRequest(url: requestUrl1)
             // Specify HTTP Method to use
-            request.httpMethod = "GET"
+            request2.httpMethod = "GET"
            
             // Send HTTP Request
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            let task1 = URLSession.shared.dataTask(with: request2) { (data, response, error) in
                 
                 // Check if Error took place
                 if let error = error {
@@ -98,14 +98,71 @@ import SwiftUICharts
                 // Convert HTTP Response Data to a simple String
                 if let data = data, let dataString = String(data: data, encoding: .utf8){
                     do {
-                        sales = try JSONDecoder().decode([Sale].self, from: data)
-                        print("Response data string:\n \(dataString)")
+                        profitLastWeek = try JSONDecoder().decode([ProfitPerDay].self, from: data)
+                        
+                        /// заполняем гистограму
+                        let warmUp = Legend(color: .blue, label: "", order: 2)
+                        let fatBurning = Legend(color: .green, label: "Сегодня", order: 3)
+                        let line = Legend(color: .secondary, label: "Выручка")
+                        
+                        points.append(.init(value: profitLastWeek[0].cleanProfit, label: LocalizedStringKey.init(profitLastWeek[0].dayOfTheWeek), legend: warmUp))
+                        points.append(.init(value: profitLastWeek[1].cleanProfit, label: LocalizedStringKey.init(profitLastWeek[1].dayOfTheWeek), legend: warmUp))
+                        points.append(.init(value: profitLastWeek[2].cleanProfit, label: LocalizedStringKey.init(profitLastWeek[2].dayOfTheWeek), legend: warmUp))
+                        points.append(.init(value: profitLastWeek[3].cleanProfit, label: LocalizedStringKey.init(profitLastWeek[3].dayOfTheWeek), legend: warmUp))
+                        points.append(.init(value: profitLastWeek[4].cleanProfit, label: LocalizedStringKey.init(profitLastWeek[4].dayOfTheWeek), legend: warmUp))
+                        points.append(.init(value: profitLastWeek[5].cleanProfit, label: LocalizedStringKey.init(profitLastWeek[5].dayOfTheWeek), legend: warmUp))
+                        points.append(.init(value: profitLastWeek[6].cleanProfit, label: LocalizedStringKey.init(profitLastWeek[6].dayOfTheWeek), legend: fatBurning))
+                        
+                        //mediana = DataPoint.init(value: 1000, label: "1000h", legend: line)
+                        
+                        
+                        print("Response profitLastWeek string:\n \(dataString)")
                     } catch let error {
                         print(error)
                     }
                    
                 }
             }
-            task.resume()
+            task1.resume()
+        }
+        
+        func getLastWeek(){
+                        let url = URL(string: "http://localhost:8080/sale/all")!
+            
+                        //guard let requestUrl = url else { fatalError() }
+                        let requestUrl = url
+            
+                        // Create URL Request
+                        var request = URLRequest(url: requestUrl)
+                        // Specify HTTP Method to use
+                        request.httpMethod = "GET"
+            
+                        // Send HTTP Request
+                        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+                            // Check if Error took place
+                            if let error = error {
+                                print("Error took place \(error)")
+                                return
+                            }
+            
+                            // Read HTTP Response Status code
+                            if let response = response as? HTTPURLResponse {
+                                print("Response HTTP Status code: \(response.statusCode)")
+                            }
+            
+                            // Convert HTTP Response Data to a simple String
+                            if let data = data, let dataString = String(data: data, encoding: .utf8){
+                                do {
+                                    sales = try JSONDecoder().decode([Sale].self, from: data)
+                                    print("Response data string:\n \(dataString)")
+                                } catch let error {
+                                    print(error)
+                                }
+            
+                            }
+                        }
+                        task.resume()
+            
         }
     }

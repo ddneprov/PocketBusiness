@@ -25,15 +25,14 @@ struct BankView: View {
 
             }
             
-            
-                VStack {
-                    Text("1 200 000 ₽").font(.system(.largeTitle, design: .rounded))
-                    Text("чистые активы").font(.system(.title3, design: .rounded))
-                }.frame(width: 350, height: 150)
-                .background(Color(UIColor(red: 0.76, green: 0.88, blue: 0.97, alpha: 1.00)))
-                .cornerRadius(10)
-                .fixedSize()
-                .padding(20)
+            VStack {
+                Text("1 200 000 ₽").font(.system(.largeTitle, design: .rounded))
+                Text("чистые активы").font(.system(.title3, design: .rounded))
+            }.frame(width: 350, height: 150)
+            .background(Color(UIColor(red: 0.76, green: 0.88, blue: 0.97, alpha: 1.00)))
+            .cornerRadius(10)
+            .fixedSize()
+            .padding(20)
                 
             
             
