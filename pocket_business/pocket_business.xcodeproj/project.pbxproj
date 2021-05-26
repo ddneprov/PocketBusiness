@@ -20,6 +20,12 @@
 		833CC5CD264ECA940012468A /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833CC5CC264ECA940012468A /* Employee.swift */; };
 		833CC5D1264ECB140012468A /* Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833CC5D0264ECB140012468A /* Bank.swift */; };
 		833CC5D52651873F0012468A /* ProfitPerDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833CC5D42651873F0012468A /* ProfitPerDay.swift */; };
+		83593002265DD0640026CADA /* ProductRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83593001265DD0640026CADA /* ProductRequests.swift */; };
+		83593008265DD0940026CADA /* SaleRequsts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83593007265DD0940026CADA /* SaleRequsts.swift */; };
+		8359300C265DD0A30026CADA /* EmployeeRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8359300B265DD0A30026CADA /* EmployeeRequests.swift */; };
+		83593010265DD0BA0026CADA /* BankRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8359300F265DD0BA0026CADA /* BankRequests.swift */; };
+		83593018265DD0E20026CADA /* AuthOrchestration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83593017265DD0E20026CADA /* AuthOrchestration.swift */; };
+		8359301C265DD1470026CADA /* ProfitPerDayRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8359301B265DD1470026CADA /* ProfitPerDayRequests.swift */; };
 		838297C825C39A0100C47C4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838297C725C39A0100C47C4B /* AppDelegate.swift */; };
 		838297CA25C39A0100C47C4B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838297C925C39A0100C47C4B /* SceneDelegate.swift */; };
 		838297CD25C39A0100C47C4B /* pocket_business.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 838297CB25C39A0100C47C4B /* pocket_business.xcdatamodeld */; };
@@ -53,6 +59,12 @@
 		833CC5CC264ECA940012468A /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		833CC5D0264ECB140012468A /* Bank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bank.swift; sourceTree = "<group>"; };
 		833CC5D42651873F0012468A /* ProfitPerDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfitPerDay.swift; sourceTree = "<group>"; };
+		83593001265DD0640026CADA /* ProductRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRequests.swift; sourceTree = "<group>"; };
+		83593007265DD0940026CADA /* SaleRequsts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleRequsts.swift; sourceTree = "<group>"; };
+		8359300B265DD0A30026CADA /* EmployeeRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeRequests.swift; sourceTree = "<group>"; };
+		8359300F265DD0BA0026CADA /* BankRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankRequests.swift; sourceTree = "<group>"; };
+		83593017265DD0E20026CADA /* AuthOrchestration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthOrchestration.swift; sourceTree = "<group>"; };
+		8359301B265DD1470026CADA /* ProfitPerDayRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfitPerDayRequests.swift; sourceTree = "<group>"; };
 		838297C425C39A0100C47C4B /* pocket_business.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pocket_business.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		838297C725C39A0100C47C4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		838297C925C39A0100C47C4B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +122,19 @@
 			path = screens;
 			sourceTree = "<group>";
 		};
+		83593000265DD0460026CADA /* orchestrations */ = {
+			isa = PBXGroup;
+			children = (
+				83593001265DD0640026CADA /* ProductRequests.swift */,
+				83593007265DD0940026CADA /* SaleRequsts.swift */,
+				8359300B265DD0A30026CADA /* EmployeeRequests.swift */,
+				8359300F265DD0BA0026CADA /* BankRequests.swift */,
+				83593017265DD0E20026CADA /* AuthOrchestration.swift */,
+				8359301B265DD1470026CADA /* ProfitPerDayRequests.swift */,
+			);
+			path = orchestrations;
+			sourceTree = "<group>";
+		};
 		838297BB25C39A0100C47C4B = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +156,7 @@
 		838297C625C39A0100C47C4B /* pocket_business */ = {
 			isa = PBXGroup;
 			children = (
+				83593000265DD0460026CADA /* orchestrations */,
 				8329B9E42634A69000FDA968 /* screens */,
 				8329B9D9263240A500FDA968 /* Entities */,
 				838297CE25C39A0100C47C4B /* ContentView.swift */,
@@ -272,18 +298,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				8329B9F02634A76700FDA968 /* BankView.swift in Sources */,
+				83593010265DD0BA0026CADA /* BankRequests.swift in Sources */,
 				8329B9F42634A9EE00FDA968 /* ThirdView.swift in Sources */,
 				838297C825C39A0100C47C4B /* AppDelegate.swift in Sources */,
+				8359301C265DD1470026CADA /* ProfitPerDayRequests.swift in Sources */,
 				833CC5CD264ECA940012468A /* Employee.swift in Sources */,
 				838297CA25C39A0100C47C4B /* SceneDelegate.swift in Sources */,
+				8359300C265DD0A30026CADA /* EmployeeRequests.swift in Sources */,
 				8329B9E12634A4DE00FDA968 /* PeopleView.swift in Sources */,
 				833CC5D52651873F0012468A /* ProfitPerDay.swift in Sources */,
+				83593002265DD0640026CADA /* ProductRequests.swift in Sources */,
 				8329B9DB263240E700FDA968 /* Sale.swift in Sources */,
 				8329B9EC2634A74800FDA968 /* TodayView.swift in Sources */,
+				83593008265DD0940026CADA /* SaleRequsts.swift in Sources */,
 				8329B9C1262FBA0000FDA968 /* Product.swift in Sources */,
 				838297CF25C39A0100C47C4B /* ContentView.swift in Sources */,
 				8329B9E62634A6DE00FDA968 /* TopView.swift in Sources */,
 				838297CD25C39A0100C47C4B /* pocket_business.xcdatamodeld in Sources */,
+				83593018265DD0E20026CADA /* AuthOrchestration.swift in Sources */,
 				833CC5D1264ECB140012468A /* Bank.swift in Sources */,
 				8329B9C9262FBC3200FDA968 /* Requests.swift in Sources */,
 				8329B9C5262FBAB200FDA968 /* Utils.swift in Sources */,
