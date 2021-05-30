@@ -11,21 +11,23 @@ import SwiftUI
 import SwiftUICharts
 
 
-struct ThirdView: View {
+struct MetricsView: View {
+    
+    @State var topProducts = [Product]()
     @State var products = [Product]()
     @State var points = [DataPoint]()
     
     var body: some View {
         
+
         NavigationView{
             ScrollView{
                 
                 VStack{
                     Text("Топ товаров")
-                        .font(.system(.title3, design: .rounded))
-                        .frame(width: 380, height: 30, alignment: .leading)
-                    
-                    
+                        .font(.system(.title2, design: .rounded)).fontWeight(.heavy).font(.title2).padding([.top,.bottom], 20)
+                            .frame(width: 380, height: 30, alignment: .leading)
+        
                     HorizontalBarChartView(dataPoints: points).padding(10)
                 }
 
@@ -36,14 +38,14 @@ struct ThirdView: View {
                 VStack{
                     
                     Text("Доходность")
-                        .font(.system(.title3, design: .rounded))
-                        .frame(width: 380, height: 30, alignment: .leading)
+                        .font(.system(.title2, design: .rounded)).fontWeight(.heavy).font(.title2).padding([.top,.bottom], 20)
+                            .frame(width: 380, height: 30, alignment: .leading)
                     
-                    let highIntensity = Legend(color: .orange, label: "2021", order: 5)
-                    let buildFitness = Legend(color: .yellow, label: "2020", order: 4)
-                    let fatBurning = Legend(color: .green, label: "2019", order: 3)
-                    let warmUp = Legend(color: .blue, label: "2018", order: 2)
-                    let low = Legend(color: .gray, label: "2017", order: 1)
+                    let highIntensity = Legend(color: .orange, label: "май", order: 5)
+                    let buildFitness = Legend(color: .yellow, label: "апрель", order: 4)
+                    let fatBurning = Legend(color: .green, label: "март", order: 3)
+                    let warmUp = Legend(color: .blue, label: "февраль", order: 2)
+                    let low = Legend(color: .gray, label: "январь", order: 1)
 
                     let limit = DataPoint(value: 120, label: "120к/мес", legend: highIntensity)
 
@@ -74,7 +76,7 @@ struct ThirdView: View {
                         .init(value: 158, label: "", legend: fatBurning),
                     ]
 
-                    BarChartView(dataPoints: points, limit: limit).padding(10)
+                    BarChartView(dataPoints: points, limit: limit).padding(10).accentColor(.black)
                 }
                 
                 Spacer()
@@ -83,7 +85,7 @@ struct ThirdView: View {
                 
                 VStack{
                     
-                    Text("Количество клиентов").font(.system(.title3, design: .rounded))
+                    Text("Количество клиентов").font(.system(.title2, design: .rounded)).fontWeight(.heavy).font(.title2).padding([.top,.bottom], 20)
                         .frame(width: 380, height: 30, alignment: .leading)
                     
                     let buildFitness = Legend(color: .yellow, label: "2021", order: 4)
@@ -107,15 +109,56 @@ struct ThirdView: View {
                         .init(value: 180, label: "13", legend: buildFitness)
                     ]
 
-                    LineChartView(dataPoints: points).padding(10)
+                    LineChartView(dataPoints: points).padding(10).accentColor(.black)
+                    
+                    
+                    Spacer()
+                    Divider()
+                    Spacer()
+        
+                    
+                    Text("Доступный остаток").font(.system(.title2, design: .rounded)).fontWeight(.heavy).font(.title2).padding([.top,.bottom], 20)
+                        .frame(width: 380, height: 30, alignment: .leading)
+                    
+                    Spacer()
+                    
+                    ForEach (0..<products.count, id: \.self) { index in
+                        HStack {
+                            Text(products[index].name).padding(10)
+                            Spacer()
+                            
+                            
+                            if(products[index].amount > 9) {
+                                Text(String(products[index].amount)).padding(10).foregroundColor(Color.black)
+                            }
+                            if (products[index].amount < 6) {
+                                Text(String(products[index].amount)).padding(10).foregroundColor(Color.red).font(Font.body.bold())
+                            }
+                            else if (products[index].amount < 10) {
+                                Text(String(products[index].amount)).padding(10).foregroundColor(Color.orange).font(Font.body.bold())
+                            }
+                        }
+                        Divider()
+                    }
                 }
-            }.navigationTitle("Метрики")
+            
             }.onAppear{
-                self.getAllProductsResponse()
+                self.callServer()
+            }.navigationTitle("Метрики")
         }
     }
     
-    func getAllProductsResponse() {
+
+    func callServer(){
+        getTopProductsResponse()
+        getAllProductsCount()
+    }
+
+    
+    func getTopProductsResponse() {
+        
+        //getAllProductsCount()
+        
         let url = URL(string: "http://localhost:8080/product/top")!
 
         //guard let requestUrl = url else { fatalError() }
@@ -143,11 +186,11 @@ struct ThirdView: View {
             // Convert HTTP Response Data to a simple String
             if let data = data, let dataString = String(data: data, encoding: .utf8){
                 do{
-                    products = try JSONDecoder().decode([Product].self, from: data)
+                    topProducts = try JSONDecoder().decode([Product].self, from: data)
                     
                     var low = Legend(color: .black, label: "", order: 1)
                     points = [DataPoint]()
-                    for product in products {
+                    for product in topProducts {
                         
                         if product.countOfSales < 40 {
                             low = Legend(color: .orange, label: "", order: 3)
@@ -164,7 +207,47 @@ struct ThirdView: View {
                                             legend: low))
                     }
                     
-                    print("Response data string:\n \(dataString)")
+                    print("Response top saled products string:\n \(dataString)")
+                } catch let error {
+                    print(error)
+                }
+               
+            }
+        }
+        task.resume()
+    }
+    
+    
+    func getAllProductsCount(){
+        let url = URL(string: "http://localhost:8080/product/all")!
+
+        //guard let requestUrl = url else { fatalError() }
+        let requestUrl = url
+
+        // Create URL Request
+        var request = URLRequest(url: requestUrl)
+        // Specify HTTP Method to use
+        request.httpMethod = "GET"
+       
+        // Send HTTP Request
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            // Check if Error took place
+            if let error = error {
+                print("Error took place \(error)")
+                return
+            }
+            
+            // Read HTTP Response Status code
+            if let response = response as? HTTPURLResponse {
+                print("Response HTTP Status code: \(response.statusCode)")
+            }
+            
+            // Convert HTTP Response Data to a simple String
+            if let data = data, let dataString = String(data: data, encoding: .utf8){
+                do {
+                    products = try JSONDecoder().decode([Product].self, from: data)
+                    print("Response all products string:\n \(dataString)")
                 } catch let error {
                     print(error)
                 }
@@ -174,3 +257,4 @@ struct ThirdView: View {
         task.resume()
     }
 }
+

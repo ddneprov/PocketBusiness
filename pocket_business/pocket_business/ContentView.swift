@@ -13,32 +13,34 @@ import SwiftUICharts
 
 struct BottomTab: View {
     var body: some View {
-                        TabView {
+       
+        
+                    TabView{
                             TodayView()
                                      .tabItem {
-                                        Image(systemName: "calendar")
-                                        Text("Сегодня")
+                                        Image(systemName: "calendar").accentColor(.red)
+                                        Text("Сегодня").accentColor(.red)
                                       }
         
-                            ThirdView()
+                            MetricsView()
                                      .tabItem {
-                                        Image(systemName: "arrowtriangle.up.square.fill")
-                                        Text("Метрики")
-                                      }
+                                        Image(systemName: "arrowtriangle.up.square.fill").renderingMode(.template)
+                                        Text("Метрики").accentColor(.red)
+                                     }
         
                             PeopleView()
                                      .tabItem {
-                                        Image(systemName: "person.3.fill")
-                                        Text("Люди")
+                                        Image(systemName: "person.3.fill").accentColor(.red)
+                                        Text("Люди").accentColor(.red)
                                       }
         
                             BankView()
                                      .tabItem {
-                                        Image(systemName: "rublesign.circle.fill")
-                                        Text("Деньги")
+                                        Image(systemName: "rublesign.circle.fill").accentColor(.red)
+                                        Text("Деньги").accentColor(.red)
                                       }
+                        }.accentColor(.red)
     }
-}
 }
     
 struct ContentView: View {
@@ -58,57 +60,6 @@ struct ContentView: View {
     }
 }
 
-
-/*
-struct ContentView: View {
-    @State var signInSuccess = false
-    
-    var body: some View {
-            return Group {
-                    if signInSuccess {
-                        TabView {
-                            TodayView()
-                                     .tabItem {
-                                        Image(systemName: "calendar")
-                                        Text("Сегодня")
-                                      }
-
-                            TopView()
-                                     .tabItem {
-                                        Image(systemName: "arrowtriangle.up.square.fill")
-                                        Text("Топ")
-                                      }
-                                
-                            ThirdView()
-                                     .tabItem {
-                                        Image(systemName: "chart.bar.xaxis")
-                                        Text("Метрики")
-                                      }
-                                
-                            PeopleView()
-                                     .tabItem {
-                                        Image(systemName: "person.3.fill")
-                                        Text("Люди")
-                                      }
-                            
-                            BankView()
-                                     .tabItem {
-                                        Image(systemName: "rublesign.circle.fill")
-                                        Text("Деньги")
-                                      }
-                            }
-                    }
-                    else {
-                        LogIn()
-//                        LoginFormView(signInSuccess: $signInSuccess)
-                    }
-                }
-        
-
-    }
-}
-*/
-
     struct LogIn: View {
         
         
@@ -120,6 +71,14 @@ struct ContentView: View {
 
         
         var body : some View{
+//            Color.yellow.edgesIgnoringSafeArea(.all).opacity(0.4)
+
+            ZStack {
+                        Color.yellow
+                        .edgesIgnoringSafeArea(.all)
+                            .opacity(0.2)
+                    
+            
                 VStack {
                      Text("Войдите в 1С «УНФ»").fontWeight(.heavy).font(.largeTitle).padding([.top,.bottom], 20)
                     VStack{
@@ -182,8 +141,24 @@ struct ContentView: View {
                         if showError {
                             Text("Неверный логин/пароль").foregroundColor(Color.red)
                         }
+                        
+                        //Spacer()
+                        
+                        
+                        Button(action: {
+                                if let url = URL(string: "https://v8.1c.ru/small.biz/") {
+                                    if UIApplication.shared.canOpenURL(url) {
+                                        UIApplication.shared.open(url, options: [:])
+                                    }
+                                }
+                            
+                        }) {
+                            Text("Подключить").foregroundColor(.gray)
+                        }
+                        
                     }
                 }
+            }
             }
         }
     

@@ -95,8 +95,13 @@
 			<version>2.3.3.RELEASE</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.12</version>
+		</dependency>
 
-<!--		<dependency>-->
+		<!--		<dependency>-->
 <!--			<groupId>junit</groupId>-->
 <!--			<artifactId>junit</artifactId>-->
 <!--			<scope>test</scope>-->

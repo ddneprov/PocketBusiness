@@ -1,11 +1,14 @@
 package com.example.serverPocketBusiness.controller;
 
 
+import com.example.serverPocketBusiness.dto.DateDto;
 import com.example.serverPocketBusiness.entity.Sale;
 import com.example.serverPocketBusiness.orchestration.SaleOrchestration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -24,4 +27,7 @@ public class SaleController {
     public List<Sale> getAll(){
         return saleOrchestration.getAll();
     }
+
+    @GetMapping("/byDate")
+    public List<Sale> getByDay(@RequestBody DateDto date) throws ParseException { return saleOrchestration.getByDate(date.getDate()); }
 }

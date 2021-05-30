@@ -13,10 +13,9 @@
 		8329B9C9262FBC3200FDA968 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8329B9C8262FBC3200FDA968 /* Requests.swift */; };
 		8329B9DB263240E700FDA968 /* Sale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8329B9DA263240E700FDA968 /* Sale.swift */; };
 		8329B9E12634A4DE00FDA968 /* PeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8329B9E02634A4DE00FDA968 /* PeopleView.swift */; };
-		8329B9E62634A6DE00FDA968 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8329B9E52634A6DE00FDA968 /* TopView.swift */; };
 		8329B9EC2634A74800FDA968 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8329B9EB2634A74800FDA968 /* TodayView.swift */; };
 		8329B9F02634A76700FDA968 /* BankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8329B9EF2634A76700FDA968 /* BankView.swift */; };
-		8329B9F42634A9EE00FDA968 /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8329B9F32634A9EE00FDA968 /* ThirdView.swift */; };
+		8329B9F42634A9EE00FDA968 /* MetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8329B9F32634A9EE00FDA968 /* MetricsView.swift */; };
 		833CC5CD264ECA940012468A /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833CC5CC264ECA940012468A /* Employee.swift */; };
 		833CC5D1264ECB140012468A /* Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833CC5D0264ECB140012468A /* Bank.swift */; };
 		833CC5D52651873F0012468A /* ProfitPerDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833CC5D42651873F0012468A /* ProfitPerDay.swift */; };
@@ -52,10 +51,9 @@
 		8329B9C8262FBC3200FDA968 /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		8329B9DA263240E700FDA968 /* Sale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sale.swift; sourceTree = "<group>"; };
 		8329B9E02634A4DE00FDA968 /* PeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleView.swift; sourceTree = "<group>"; };
-		8329B9E52634A6DE00FDA968 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		8329B9EB2634A74800FDA968 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		8329B9EF2634A76700FDA968 /* BankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankView.swift; sourceTree = "<group>"; };
-		8329B9F32634A9EE00FDA968 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
+		8329B9F32634A9EE00FDA968 /* MetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsView.swift; sourceTree = "<group>"; };
 		833CC5CC264ECA940012468A /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		833CC5D0264ECB140012468A /* Bank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bank.swift; sourceTree = "<group>"; };
 		833CC5D42651873F0012468A /* ProfitPerDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfitPerDay.swift; sourceTree = "<group>"; };
@@ -113,11 +111,10 @@
 		8329B9E42634A69000FDA968 /* screens */ = {
 			isa = PBXGroup;
 			children = (
-				8329B9E52634A6DE00FDA968 /* TopView.swift */,
-				8329B9E02634A4DE00FDA968 /* PeopleView.swift */,
 				8329B9EB2634A74800FDA968 /* TodayView.swift */,
+				8329B9F32634A9EE00FDA968 /* MetricsView.swift */,
+				8329B9E02634A4DE00FDA968 /* PeopleView.swift */,
 				8329B9EF2634A76700FDA968 /* BankView.swift */,
-				8329B9F32634A9EE00FDA968 /* ThirdView.swift */,
 			);
 			path = screens;
 			sourceTree = "<group>";
@@ -299,7 +296,7 @@
 			files = (
 				8329B9F02634A76700FDA968 /* BankView.swift in Sources */,
 				83593010265DD0BA0026CADA /* BankRequests.swift in Sources */,
-				8329B9F42634A9EE00FDA968 /* ThirdView.swift in Sources */,
+				8329B9F42634A9EE00FDA968 /* MetricsView.swift in Sources */,
 				838297C825C39A0100C47C4B /* AppDelegate.swift in Sources */,
 				8359301C265DD1470026CADA /* ProfitPerDayRequests.swift in Sources */,
 				833CC5CD264ECA940012468A /* Employee.swift in Sources */,
@@ -313,7 +310,6 @@
 				83593008265DD0940026CADA /* SaleRequsts.swift in Sources */,
 				8329B9C1262FBA0000FDA968 /* Product.swift in Sources */,
 				838297CF25C39A0100C47C4B /* ContentView.swift in Sources */,
-				8329B9E62634A6DE00FDA968 /* TopView.swift in Sources */,
 				838297CD25C39A0100C47C4B /* pocket_business.xcdatamodeld in Sources */,
 				83593018265DD0E20026CADA /* AuthOrchestration.swift in Sources */,
 				833CC5D1264ECB140012468A /* Bank.swift in Sources */,

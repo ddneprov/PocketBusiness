@@ -19,7 +19,7 @@ public class Sale {
     private String costs;
     private String costsWithTax;
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date date;
     private Double totalCost;
     private Double totalCostWithTax;

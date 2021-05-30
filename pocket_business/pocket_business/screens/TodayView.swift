@@ -22,6 +22,7 @@ import SwiftUICharts
         @State var profitLastWeek = [ProfitPerDay]()
         @State var points = [DataPoint]()
     
+        @State private var date = Date()
 
       
         
@@ -31,17 +32,26 @@ import SwiftUICharts
                     
                     VStack{
 
-                        //let line = Legend(color: .secondary, label: "Выручка")
-                        //let mediana = DataPoint(value: 99, label: "160 ₽", legend: line)
-                        //BarChartView(dataPoints: points, limit: mediana)
+                        
+                        BarChartView(dataPoints: points).accentColor(.black).padding(.leading, 10)
                         
                         
-                        BarChartView(dataPoints: points)
+                        HStack{
+                            
+                            Text("Чеки: ")
+                                .font(.system(size: 24, weight: .heavy, design: .default))
+                                .padding(.leading, 5)
+                                .frame(width: 100, height: 50, alignment: .leading)
+                            
+                            DatePicker(
+                                    "",
+                                    selection: $date,
+                                    displayedComponents: [.date, .hourAndMinute]
+                            ).padding(10).onChange(of: date, perform: { (value) in
+                                dateChanged()
+                            }).accentColor(.black)
+                        }
                         
-                        Text(self.utils.getDate())
-                            .font(.system(size: 24, weight: .heavy, design: .default))
-                            .padding(.horizontal, 0)
-                            .frame(width: 400, height: 50, alignment: .leading)
 
                         Spacer()
                         Spacer()
@@ -66,6 +76,10 @@ import SwiftUICharts
         }
         
        
+        func dateChanged(){
+            print("changed date" + date.description)
+        }
+        
         
         func getAllSalesResponse() {
             
@@ -105,16 +119,17 @@ import SwiftUICharts
                         let fatBurning = Legend(color: .green, label: "Сегодня", order: 3)
                         let line = Legend(color: .secondary, label: "Выручка")
                         
-                        points.append(.init(value: profitLastWeek[0].cleanProfit, label: LocalizedStringKey.init(profitLastWeek[0].dayOfTheWeek), legend: warmUp))
-                        points.append(.init(value: profitLastWeek[1].cleanProfit, label: LocalizedStringKey.init(profitLastWeek[1].dayOfTheWeek), legend: warmUp))
-                        points.append(.init(value: profitLastWeek[2].cleanProfit, label: LocalizedStringKey.init(profitLastWeek[2].dayOfTheWeek), legend: warmUp))
-                        points.append(.init(value: profitLastWeek[3].cleanProfit, label: LocalizedStringKey.init(profitLastWeek[3].dayOfTheWeek), legend: warmUp))
-                        points.append(.init(value: profitLastWeek[4].cleanProfit, label: LocalizedStringKey.init(profitLastWeek[4].dayOfTheWeek), legend: warmUp))
-                        points.append(.init(value: profitLastWeek[5].cleanProfit, label: LocalizedStringKey.init(profitLastWeek[5].dayOfTheWeek), legend: warmUp))
-                        points.append(.init(value: profitLastWeek[6].cleanProfit, label: LocalizedStringKey.init(profitLastWeek[6].dayOfTheWeek), legend: fatBurning))
-                        
+                        if(points.isEmpty) {
+                            points.append(.init(value: profitLastWeek[0].cleanProfit, label: LocalizedStringKey.init(profitLastWeek[0].dayOfTheWeek), legend: warmUp))
+                            points.append(.init(value: profitLastWeek[1].cleanProfit, label: LocalizedStringKey.init(profitLastWeek[1].dayOfTheWeek), legend: warmUp))
+                            points.append(.init(value: profitLastWeek[2].cleanProfit, label: LocalizedStringKey.init(profitLastWeek[2].dayOfTheWeek), legend: warmUp))
+                            points.append(.init(value: profitLastWeek[3].cleanProfit, label: LocalizedStringKey.init(profitLastWeek[3].dayOfTheWeek), legend: warmUp))
+                            points.append(.init(value: profitLastWeek[4].cleanProfit, label: LocalizedStringKey.init(profitLastWeek[4].dayOfTheWeek), legend: warmUp))
+                            points.append(.init(value: profitLastWeek[5].cleanProfit, label: LocalizedStringKey.init(profitLastWeek[5].dayOfTheWeek), legend: warmUp))
+                            points.append(.init(value: profitLastWeek[6].cleanProfit, label: LocalizedStringKey.init(profitLastWeek[6].dayOfTheWeek), legend: fatBurning))
+                        }
+                       
                         //mediana = DataPoint.init(value: 1000, label: "1000h", legend: line)
-                        
                         
                         print("Response profitLastWeek string:\n \(dataString)")
                     } catch let error {
@@ -126,7 +141,7 @@ import SwiftUICharts
             task1.resume()
         }
         
-        func getLastWeek(){
+        func getLastWeek() {
                         let url = URL(string: "http://localhost:8080/sale/all")!
             
                         //guard let requestUrl = url else { fatalError() }
@@ -163,6 +178,5 @@ import SwiftUICharts
                             }
                         }
                         task.resume()
-            
         }
     }

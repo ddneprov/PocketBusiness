@@ -8,7 +8,11 @@ import com.example.serverPocketBusiness.repository.SaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SaleOrchestration {
@@ -44,5 +48,12 @@ public class SaleOrchestration {
 
     public List<Sale> getAll(){
         return saleRepository.findAll();
+    }
+
+    public List<Sale> getByDate(String date) throws ParseException {
+        System.out.println(date);
+        Date realDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        Optional<List<Sale>> list = saleRepository.findAllByDate(realDate);
+        return list.orElse(null);
     }
 }

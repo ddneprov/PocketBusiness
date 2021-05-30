@@ -21,18 +21,19 @@ struct BankView: View {
                 Spacer()
                 Spacer()
                 Image(systemName: "arrow.uturn.backward.circle.fill").resizable()
-                    .frame(width: 32.0, height: 32.0)
+                    .frame(width: 32.0, height: 32.0).padding(.trailing, 20)
 
             }
             
             VStack {
                 Text("1 200 000 ₽").font(.system(.largeTitle, design: .rounded))
                 Text("чистые активы").font(.system(.title3, design: .rounded))
-            }.frame(width: 350, height: 150)
-            .background(Color(UIColor(red: 0.76, green: 0.88, blue: 0.97, alpha: 1.00)))
+            }.frame(width: 400, height: 150)
+            .background(RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.yellow)
+                            .opacity(0.2))
             .cornerRadius(10)
             .fixedSize()
-            .padding(20)
                 
             
             

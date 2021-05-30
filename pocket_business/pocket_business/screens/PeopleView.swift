@@ -14,66 +14,33 @@ import SwiftUI
 
 
 struct PeopleView: View {
+    
+    @State private var date = Date()
+
+    
     var body: some View {
         NavigationView{
             ScrollView{
                 VStack{
-                    Text("")
                     
-                    HStack{
-                        VStack{
-                            Image("face")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .padding(10)
-                                        .frame(height: 200)
-                            
-                            Text("Иван Иванов")
-                            Text("Менеджер")
-                            Text("+89090334541").fontWeight(.light)
-                        }
-                        
-                        VStack{
-                            Image("face")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .padding(10)
-                                        .frame(height: 200)
-                            
-                            Text("Мария Васильева")
-                            Text("Бариста")
-                            Text("+89037209345").fontWeight(.light)
-                        }
-                    }
+                    DatePicker(
+                            "Start Date",
+                            selection: $date,
+                            displayedComponents: [.date]
+                        )
+                    .datePickerStyle(GraphicalDatePickerStyle())
+                    .background(RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.yellow)
+                            .opacity(0.2))
+                            .datePickerStyle(GraphicalDatePickerStyle())
+                    .padding(10)
+                    .accentColor(.red)
                     
-                    Text("")
-                    Text("")
                     
-                    HStack{
-                        VStack{
-                            Image("face")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .padding(10)
-                                        .frame(height: 200)
-                            
-                            Text("Иван Иванов")
-                            Text("Бариста")
-                            Text("+89067241757").fontWeight(.light)
-                        }
-                        
-                        VStack{
-                            Image("face")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .padding(10)
-                                        .frame(height: 200)
-                            
-                            Text("Иван Иванов")
-                            Text("Уборщица")
-                            Text("+8934384951").fontWeight(.light)
-                        }
-                    }
+                    
+                    
+                    
+                
                 }.navigationTitle("Сотрудники")
             }
         }

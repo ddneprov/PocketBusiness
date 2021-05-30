@@ -33,7 +33,6 @@ public class AuthenticationRestControllerV1 {
         this.userService = userService;
     }
 
-    //@PostMapping("login")
     @GetMapping("login")
     //public ResponseEntity login(@RequestBody AuthenticationRequestDto requestDto) {
     public ResponseEntity login(@RequestParam String userLogin, @RequestParam String userPassword) {
