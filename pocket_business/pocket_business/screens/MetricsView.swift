@@ -23,6 +23,8 @@ struct MetricsView: View {
         NavigationView{
             ScrollView{
                 
+                Spacer()
+                
                 VStack{
                     Text("Топ товаров")
                         .font(.system(.title2, design: .rounded)).fontWeight(.heavy).font(.title2).padding([.top,.bottom], 20)
@@ -32,7 +34,6 @@ struct MetricsView: View {
                 }
 
                 Spacer()
-                Divider()
                 Spacer()
                 
                 VStack{
@@ -80,7 +81,6 @@ struct MetricsView: View {
                 }
                 
                 Spacer()
-                Divider()
                 Spacer()
                 
                 VStack{
@@ -113,7 +113,6 @@ struct MetricsView: View {
                     
                     
                     Spacer()
-                    Divider()
                     Spacer()
         
                     

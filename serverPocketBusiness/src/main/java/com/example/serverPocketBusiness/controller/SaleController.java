@@ -29,5 +29,5 @@ public class SaleController {
     }
 
     @GetMapping("/byDate")
-    public List<Sale> getByDay(@RequestBody DateDto date) throws ParseException { return saleOrchestration.getByDate(date.getDate()); }
+    public List<Sale> getByDay(@RequestParam String date) throws ParseException { return saleOrchestration.getByDate(date); }
 }

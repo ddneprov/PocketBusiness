@@ -19,8 +19,8 @@ public class Sale {
     private String costs;
     private String costsWithTax;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
-    private Date date;
+    //@JsonFormat(pattern="yyyy-MM-dd")
+    private String date;
     private Double totalCost;
     private Double totalCostWithTax;
 
@@ -62,11 +62,11 @@ public class Sale {
         this.amounts = amounts;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

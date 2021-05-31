@@ -11,5 +11,5 @@ import java.util.Optional;
 
 @Repository
 public interface SaleRepository extends JpaRepository<Sale, String> {
-    Optional<List<Sale>> findAllByDate(Date date);
+    Optional<List<Sale>> findAllByDate(String date);
 }

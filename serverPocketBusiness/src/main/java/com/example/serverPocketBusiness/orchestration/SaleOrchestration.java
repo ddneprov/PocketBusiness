@@ -51,9 +51,9 @@ public class SaleOrchestration {
     }
 
     public List<Sale> getByDate(String date) throws ParseException {
-        System.out.println(date);
-        Date realDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
-        Optional<List<Sale>> list = saleRepository.findAllByDate(realDate);
+        String finalString = date + " 14:05:00";
+        System.out.println("finalString -> " + finalString);
+        Optional<List<Sale>> list = saleRepository.findAllByDate(finalString);
         return list.orElse(null);
     }
 }

@@ -46,7 +46,7 @@ import SwiftUICharts
                             DatePicker(
                                     "",
                                     selection: $date,
-                                    displayedComponents: [.date, .hourAndMinute]
+                                displayedComponents: [.date]
                             ).padding(10).onChange(of: date, perform: { (value) in
                                 dateChanged()
                             }).accentColor(.black)
@@ -76,8 +76,60 @@ import SwiftUICharts
         }
         
        
-        func dateChanged(){
-            print("changed date" + date.description)
+        func dateChanged() {
+            //let a = "http://localhost:8080/sale/byDate?date=" + date.description
+            //var a = "http://localhost:8080/sale/byDate?date=2021-04-20 15:50:00 +0000"
+            print("href " + date.description)
+
+
+            let dateFormatterGet = DateFormatter()
+            dateFormatterGet.dateFormat = "yyyy-MM-dd"
+            
+            let dateFormatterPrint = DateFormatter()
+            dateFormatterPrint.dateFormat = "yyyy-MM-dd"
+            
+            
+            
+            let url2 = URL(string: "http://localhost:8080/sale/byDate?date=" + dateFormatterPrint.string(from: date))!
+           
+            print("http://localhost:8080/sale/byDate?date=" + dateFormatterPrint.string(from: date))
+
+            
+            //guard let requestUrl = url else { fatalError() }
+            let requestUrl = url2
+
+            // Create URL Request
+            var request = URLRequest(url: requestUrl)
+            // Specify HTTP Method to use
+            request.httpMethod = "GET"
+
+            // Send HTTP Request
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+
+                // Check if Error took place
+                if let error = error {
+                    print("Error took place \(error)")
+                    return
+                }
+
+                // Read HTTP Response Status code
+                if let response = response as? HTTPURLResponse {
+                    print("Response HTTP Status code: \(response.statusCode)")
+                }
+
+                // Convert HTTP Response Data to a simple String
+                if let data = data, let dataString = String(data: data, encoding: .utf8){
+                    do {
+                        sales = try JSONDecoder().decode([Sale].self, from: data)
+                        print("Response data string:\n \(dataString)")
+                    } catch let error {
+                        print(error)
+                    }
+
+                }
+            }
+            task.resume()
+            
         }
         
         
