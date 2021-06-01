@@ -23,7 +23,7 @@ public class SaleOrchestration {
     private ProductRepository productRepository;
 
     @Autowired
-    ProductOrchestration productOrchestration;
+    private ProductOrchestration productOrchestration;
 
     /**
      *
