@@ -14,7 +14,7 @@ import SwiftUICharts
 struct MetricsView: View {
     
     @State var topProducts = [Product]()
-    @State var products = [Product]()
+    @State var warehouse_products = [Warehouse]()
     @State var points = [DataPoint]()
     
     var body: some View {
@@ -88,10 +88,10 @@ struct MetricsView: View {
                     Text("Количество клиентов").font(.system(.title2, design: .rounded)).fontWeight(.heavy).font(.title2).padding([.top,.bottom], 20)
                         .frame(width: 380, height: 30, alignment: .leading)
                     
-                    let buildFitness = Legend(color: .yellow, label: "2021", order: 4)
-                    let fatBurning = Legend(color: .green, label: "2020", order: 3)
-                    let warmUp = Legend(color: .blue, label: "2019", order: 2)
-                    let low = Legend(color: .gray, label: "2018", order: 1)
+                    let buildFitness = Legend(color: .yellow, label: "май", order: 4)
+                    let fatBurning = Legend(color: .green, label: "апрель", order: 3)
+                    let warmUp = Legend(color: .blue, label: "март", order: 2)
+                    let low = Legend(color: .gray, label: "февраль", order: 1)
 
                     let points: [DataPoint] = [
                         .init(value: 70, label: "1", legend: low),
@@ -121,20 +121,20 @@ struct MetricsView: View {
                     
                     Spacer()
                     
-                    ForEach (0..<products.count, id: \.self) { index in
+                    ForEach (0..<warehouse_products.count, id: \.self) { index in
                         HStack {
-                            Text(products[index].name).padding(10)
+                            Text(warehouse_products[index].name).padding(10)
                             Spacer()
                             
                             
-                            if(products[index].amount > 9) {
-                                Text(String(products[index].amount)).padding(10).foregroundColor(Color.black)
+                            if(warehouse_products[index].amount > 9) {
+                                Text(String(warehouse_products[index].amount)).padding(10).foregroundColor(Color.black)
                             }
-                            if (products[index].amount < 6) {
-                                Text(String(products[index].amount)).padding(10).foregroundColor(Color.red).font(Font.body.bold())
+                            if (warehouse_products[index].amount < 6) {
+                                Text(String(warehouse_products[index].amount)).padding(10).foregroundColor(Color.red).font(Font.body.bold())
                             }
-                            else if (products[index].amount < 10) {
-                                Text(String(products[index].amount)).padding(10).foregroundColor(Color.orange).font(Font.body.bold())
+                            else if (warehouse_products[index].amount < 10) {
+                                Text(String(warehouse_products[index].amount)).padding(10).foregroundColor(Color.orange).font(Font.body.bold())
                             }
                         }
                         Divider()
@@ -218,7 +218,7 @@ struct MetricsView: View {
     
     
     func getAllProductsCount(){
-        let url = URL(string: "http://localhost:8080/product/all")!
+        let url = URL(string: "http://localhost:8080/warehouse/getAll")!
 
         //guard let requestUrl = url else { fatalError() }
         let requestUrl = url
@@ -245,7 +245,7 @@ struct MetricsView: View {
             // Convert HTTP Response Data to a simple String
             if let data = data, let dataString = String(data: data, encoding: .utf8){
                 do {
-                    products = try JSONDecoder().decode([Product].self, from: data)
+                    warehouse_products = try JSONDecoder().decode([Warehouse].self, from: data)
                     print("Response all products string:\n \(dataString)")
                 } catch let error {
                     print(error)

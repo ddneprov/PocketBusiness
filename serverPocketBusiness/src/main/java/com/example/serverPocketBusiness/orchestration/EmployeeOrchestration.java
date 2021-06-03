@@ -1,23 +1,33 @@
-package com.example.serverPocketBusiness.controller;
+package com.example.serverPocketBusiness.orchestration;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.serverPocketBusiness.entity.Employee;
+import com.example.serverPocketBusiness.mappers.EmployeeMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 import java.util.Scanner;
 
-@RestController
-@RequestMapping("/1c")
-public class IntegrationController {
+@Service
+public class EmployeeOrchestration {
+
+    @Autowired
+    private EmployeeMapper employeeMapper;
 
 
-    @GetMapping("/getList")
-    public String getList() {
+    public List<Employee> getAll() {
+        String response1c = request1CEmployee();
+        return employeeMapper.map(response1c);
+    }
+
+
+
+    private String request1CEmployee(){
         String query = "http://89.208.85.216/test6/hs/employees";
 
         HttpURLConnection connection = null;
