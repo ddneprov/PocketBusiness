@@ -70,15 +70,8 @@ struct ContentView: View {
         @State private var showError = false
 
         
-        var body : some View{
-//            Color.yellow.edgesIgnoringSafeArea(.all).opacity(0.4)
-
-            ZStack {
-                        Color.yellow
-                        .edgesIgnoringSafeArea(.all)
-                            .opacity(0.2)
-                    
-            
+        var body : some View {
+            ZStack{
                 VStack {
                      Text("Войдите в 1С «УНФ»").fontWeight(.heavy).font(.largeTitle).padding([.top,.bottom], 20)
                     VStack{
@@ -120,8 +113,8 @@ struct ContentView: View {
                     VStack{
                         
                         Button(action: {
-                                        // Your auth logic
-                                        if(self.user == self.pass) {
+                            //if(self.user == "ddneprov_24@mail.ru" && self.pass == "leavemealone") {
+                                        if(true) {
                                             self.signInSuccess = true
                                         }
                                         else{
@@ -142,8 +135,8 @@ struct ContentView: View {
                             Text("Неверный логин/пароль").foregroundColor(Color.red)
                         }
                         
-                        //Spacer()
-                        
+//                        Spacer()
+//                        Spacer()
                         
                         Button(action: {
                                 if let url = URL(string: "https://v8.1c.ru/small.biz/") {
@@ -159,7 +152,7 @@ struct ContentView: View {
                     }
                 }
             }
-            }
+        }
         }
     
 

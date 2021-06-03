@@ -141,7 +141,7 @@ struct MetricsView: View {
                     }
                 }
             
-            }.onAppear{
+            }.onAppear {
                 self.callServer()
             }.navigationTitle("Метрики")
         }
